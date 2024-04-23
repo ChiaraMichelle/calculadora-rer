@@ -1,22 +1,22 @@
 body {
-    font-family: "Lato", sans-serif;
-    background-color: #f9f9f9;
+    font-family: "Source Sans 3", sans-serif;
+    background-image: linear-gradient(359deg, #3023ae, #eb7f7b);
     color: #333; /* black */
     margin: 0;
     padding: 0;
 }
 
 h1 {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 400;
     font-size: 45px;
     text-align: center;
     margin-bottom: 20px;
-    color: #ff0066; /* hot pink */
+    color: 	#FAF9F6;
 }
 
 .pacifico-regular {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Pacifico', sans-serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -54,6 +54,8 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
 }
 
 input[type="submit"]:hover {
@@ -64,10 +66,10 @@ input[type="submit"]:hover {
     text-align: center;
     margin-top: 20px;
     padding: 20px;
-    background-color: #008000; /* forest green */
+    background-color: 	#FAF9F6;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: #fff; /* white */
+    color: black; /* white */
 }
 
 .output-text {
