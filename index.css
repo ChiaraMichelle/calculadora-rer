@@ -1,5 +1,5 @@
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
     background-image: linear-gradient(145deg, #3023ae, #eb7f7b);
     color: #333; /* black */
     margin: 0;
@@ -9,6 +9,7 @@ body {
 
 h1 {
     font-family: 'Pacifico', cursive;
+    font-weight: light;
     font-size: 45px;
     text-align: center;
     margin-bottom: 20px;
@@ -16,7 +17,7 @@ h1 {
 }
 
 #indieflower {
-    font-family: 'Indie Flower', cursive;
+    font-family: 'Quicksand';
 }
 
 .pacifico-regular {
