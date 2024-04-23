@@ -103,4 +103,27 @@ input[type="button"]:hover {
     input[type="button"] {
         width: 100%;
     }
+
+    @media only screen and (max-width: 600px) {
+        h1 {
+            font-weight: lighter; /* Make the font lighter */
+        }
+    
+        input[type="button"] {
+            font-family: 'Quicksand', sans-serif; /* Apply Quicksand font to the button */
+            background-color: #ff0066; /* Hot pink */
+            color: #fff; /* White text */
+            border: none;
+            padding: 15px 30px; /* Increase button height */
+            font-size: 20px; /* Increase font size */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px; /* Adjust margin */
+        }
+    
+        input[type="button"]:hover {
+            background-color: #cc0044;
+        }
+    }
 }
