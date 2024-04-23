@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora RER</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -35,6 +34,9 @@
             <option value="recovery">Recovery</option>
             <option value="puppy">Gastrointestinal puppy</option>
             <option value="kitten">Gastrointestinal kitten</option>
+            <option value="low_fat_liquid">GI Low Fat Liquid</option>
+            <option value="high_energy_liquid">GI High Energy Liquid</option>
+            <option value="recovery_liquid">Recovery Liquid</option>
         </select>
 
         <label for="portion">Seleccionar porcentaje RER:</label>
@@ -47,54 +49,65 @@
             <option value="1">100% del RER</option>
         </select>
 
-        <input type="submit" value="Calcular">
+        <input type="button" id="calcularButton" value="Calcular">
     </form>
 
-    <div id="result">
-        <!-- Output will be displayed here -->
-    </div>
+    <div id="result"></div>
 
     <script>
-        document.getElementById("rerForm").addEventListener("submit", function(event) {
-            event.preventDefault();
+        document.getElementById("calcularButton").addEventListener("click", function() {
             var weight = parseFloat(document.getElementById("weight").value);
             var dailyFeeds = parseInt(document.getElementById("dailyFeeds").value);
             var foodType = document.getElementById("foodType").value;
             var portion = document.getElementById("portion").value;
-            var kcalPerKg = 0;
-
-            // Set kcal per kg based on selected food type
-            switch (foodType) {
-                case "normal_dogs":
-                    kcalPerKg = 1111; // kcal/kg for Gastrointestinal normal perros
-                    break;
-                case "normal_cats":
-                    kcalPerKg = 955; // kcal/kg for Gastrointestinal normal gatos
-                    break;
-                case "recovery":
-                    kcalPerKg = 1183; // kcal/kg for Recovery
-                    break;
-                case "puppy":
-                    kcalPerKg = 977; // kcal/kg for Gastrointestinal puppy
-                    break;
-                case "kitten":
-                    kcalPerKg = 999; // kcal/kg for Gastrointestinal kitten
-                    break;
-            }
-
             var rer = (weight * 30) + 70;
             var portionFraction = eval(portion.replace('/', '/'));
-            var totalKcalPerFeed = rer * portionFraction / dailyFeeds;
-            var gramsPerFeed = totalKcalPerFeed / (kcalPerKg / 1000); // Convert kcal to grams
+            var result = document.getElementById("result");
+            var output;
 
-            var totalRER = rer.toFixed(2);
-            var gramsPerFeedStr = gramsPerFeed.toFixed(2);
-            var portionLabel = (portion === "1") ? "100% RER" : portion;
-            var output = "Total del RER diario: " + totalRER + " Kcal<br>";
-            output += "Gramos por toma (" + portionLabel + "): " + gramsPerFeedStr + " g";
-
-            document.getElementById("result").innerHTML = output;
-            document.getElementById("result").style.display = "block"; // Show the output
+            if (foodType === "low_fat_liquid" || foodType === "high_energy_liquid" || foodType === "recovery_liquid") {
+                var kcalPerMl = 0;
+                switch (foodType) {
+                    case "low_fat_liquid":
+                        kcalPerMl = 1; // kcal/ml for GI Low Fat Liquid
+                        break;
+                    case "high_energy_liquid":
+                        kcalPerMl = 1.5; // kcal/ml for GI High Energy Liquid
+                        break;
+                    case "recovery_liquid":
+                        kcalPerMl = 1; // kcal/ml for Recovery Liquid
+                        break;
+                }
+                var totalKcalPerFeed = (rer * portionFraction) / dailyFeeds;
+                var mlPerFeed = totalKcalPerFeed / kcalPerMl;
+                output = "Total del RER diario: " + rer.toFixed(2) + " Kcal<br>";
+                output += "Cantidad por toma (" + portion + "): " + mlPerFeed.toFixed(2) + " ml";
+            } else {
+                var kcalPerKg = 0;
+                switch (foodType) {
+                    case "normal_dogs":
+                        kcalPerKg = 1111; // kcal/kg for Gastrointestinal normal perros
+                        break;
+                    case "normal_cats":
+                        kcalPerKg = 1111; // kcal/kg for Gastrointestinal normal gatos
+                        break;
+                    case "recovery":
+                        kcalPerKg = 1183; // kcal/kg for Recovery
+                        break;
+                    case "puppy":
+                        kcalPerKg = 977; // kcal/kg for Gastrointestinal puppy
+                        break;
+                    case "kitten":
+                        kcalPerKg = 999; // kcal/kg for Gastrointestinal kitten
+                        break;
+                }
+                var totalKcalPerFeed = (rer * portionFraction) / dailyFeeds;
+                var gramsPerFeed = totalKcalPerFeed / (kcalPerKg / 1000); // Convert kcal to grams
+                output = "Total del RER diario: " + rer.toFixed(2) + " Kcal<br>";
+                output += "Cantidad por toma (" + portion + "): " + gramsPerFeed.toFixed(2) + " g";
+            }
+            result.innerHTML = output;
+            result.style.display = 'block'; // Show the result area
         });
     </script>
 </body>
