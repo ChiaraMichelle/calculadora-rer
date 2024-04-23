@@ -3,6 +3,7 @@ body {
     background-image: linear-gradient(359deg, #3023ae, #eb7f7b);
     color: #333; /* black */
     margin: 0;
+     height: 100vh;
     padding: 0;
 }
 
@@ -13,6 +14,13 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
     color: 	#FAF9F6;
+}
+
+
+#indieflower {
+
+font-family: "Indie Flower", cursive;
+
 }
 
 .pacifico-regular {
